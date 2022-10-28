@@ -6,9 +6,9 @@ export const userApi = axios.create({
 
 export const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    userApi.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
+    userApi.defaults.headers.common.Authorization = '';
   },
 };

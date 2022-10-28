@@ -11,9 +11,9 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('effect');
     dispatch(currentThunk());
   }, [dispatch]);
+
   return (
     <div>
       <Routes>

@@ -1,10 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUpThunk, signInThunk, logOutThunk } from './authThunk';
+import {
+  signUpThunk,
+  signInThunk,
+  logOutThunk,
+  currentThunk,
+} from './authThunk';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: null,
+    user: { name: '', email: '' },
     token: null,
     isLoading: false,
     errorMessage: '',
@@ -56,6 +61,22 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     [logOutThunk.rejected](state, { payload }) {
+      state.user = null;
+      state.token = null;
+      state.errorMessage = payload;
+      state.isLoading = false;
+      state.isLoggedIn = false;
+    },
+    [currentThunk.pending](state) {
+      state.isLoading = true;
+    },
+    [currentThunk.fulfilled](state, { payload }) {
+      state.user = payload;
+      state.isLoading = false;
+      state.errorMessage = '';
+      state.isLoggedIn = true;
+    },
+    [currentThunk.rejected](state, { payload }) {
       state.user = null;
       state.token = null;
       state.errorMessage = payload;

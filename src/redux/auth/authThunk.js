@@ -36,6 +36,9 @@ export const signInThunk = createAsyncThunk(
 export const logOutThunk = createAsyncThunk(
   'auth/logOut',
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    token.set(persistedToken);
     try {
       await logOutService();
       token.unset();
@@ -51,9 +54,9 @@ export const currentThunk = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue();
-    }
+    // if (persistedToken === null) {
+    //   return thunkAPI.rejectWithValue();
+    // }
     token.set(persistedToken);
     try {
       const { data } = await currentService();
