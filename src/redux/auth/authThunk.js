@@ -54,9 +54,9 @@ export const currentThunk = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
-    // if (persistedToken === null) {
-    //   return thunkAPI.rejectWithValue();
-    // }
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
     token.set(persistedToken);
     try {
       const { data } = await currentService();

@@ -1,2 +1,3 @@
-export const selectIsLoggedIn = state => state.auth.isLoggedIn;
-export const selectError = state => state.auth.errorMessage.message;
+export const selectError = state => state.auth.errorMessage;
+
+export const selectAuth = state => state.auth;

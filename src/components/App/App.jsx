@@ -6,6 +6,7 @@ import LayoutPage from 'pages/LayoutPage';
 import { useDispatch } from 'react-redux';
 import { currentThunk } from 'redux/auth/authThunk';
 import { useEffect } from 'react';
+import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ export const App = () => {
         <Route path="/" element={<LayoutPage />}>
           <Route index element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="contacts" element={<ContactsPage />} />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="contacts" element={<ContactsPage />} />
+          </Route>
         </Route>
       </Routes>
     </div>

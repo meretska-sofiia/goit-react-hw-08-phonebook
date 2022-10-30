@@ -3,8 +3,9 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { logOutThunk } from 'redux/auth/authThunk';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { selectAuth } from 'redux/auth/authSelector';
 // import { token } from 'redux/request';
 
 export default function BasicMenu() {
@@ -12,6 +13,7 @@ export default function BasicMenu() {
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userName = useSelector(selectAuth);
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -34,7 +36,7 @@ export default function BasicMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        User Name
+        {userName.user.name}
       </Button>
       <Menu
         id="basic-menu"

@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { Input, Label } from './Filter.styled';
+
 import { filterContacts } from 'redux/contacts/slices/filterSlice';
+import TextField from '@mui/material/TextField';
+import { Form } from 'components/AddContactForm/ContactForm.styled';
 
 const SearchContactFilter = () => {
   const dispatch = useDispatch();
@@ -11,10 +13,18 @@ const SearchContactFilter = () => {
   };
 
   return (
-    <>
-      <Label htmlFor="search">Find contacts by name</Label>
-      <Input type="text" id="search" onChange={handleFilterChange} />
-    </>
+    <Form>
+      <TextField
+        id="outlined-search"
+        label="Find contacts by name"
+        type="text"
+        name="name"
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+        onChange={handleFilterChange}
+      />
+    </Form>
   );
 };
 

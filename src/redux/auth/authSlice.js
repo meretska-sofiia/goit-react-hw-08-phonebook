@@ -13,7 +13,6 @@ const authSlice = createSlice({
     token: null,
     isLoading: false,
     errorMessage: '',
-    isLoggedIn: false,
   },
   extraReducers: {
     [signUpThunk.pending](state) {
@@ -31,7 +30,6 @@ const authSlice = createSlice({
       state.token = null;
       state.errorMessage = payload;
       state.isLoading = false;
-      state.isLoggedIn = false;
     },
     [signInThunk.pending](state) {
       state.isLoading = true;
@@ -41,14 +39,12 @@ const authSlice = createSlice({
       state.token = payload.token;
       state.isLoading = false;
       state.errorMessage = '';
-      state.isLoggedIn = true;
     },
     [signInThunk.rejected](state, { payload }) {
       state.user = null;
       state.token = null;
       state.errorMessage = payload;
       state.isLoading = false;
-      state.isLoggedIn = false;
     },
     [logOutThunk.pending](state) {
       state.isLoading = true;
@@ -58,14 +54,12 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoading = false;
       state.errorMessage = '';
-      state.isLoggedIn = false;
     },
     [logOutThunk.rejected](state, { payload }) {
       state.user = null;
       state.token = null;
       state.errorMessage = payload;
       state.isLoading = false;
-      state.isLoggedIn = false;
     },
     [currentThunk.pending](state) {
       state.isLoading = true;
@@ -74,14 +68,12 @@ const authSlice = createSlice({
       state.user = payload;
       state.isLoading = false;
       state.errorMessage = '';
-      state.isLoggedIn = true;
     },
     [currentThunk.rejected](state, { payload }) {
       state.user = null;
       state.token = null;
       state.errorMessage = payload;
       state.isLoading = false;
-      state.isLoggedIn = false;
     },
   },
 });
