@@ -6,7 +6,6 @@ import { logOutThunk } from 'redux/auth/authThunk';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectAuth } from 'redux/auth/authSelector';
-// import { token } from 'redux/request';
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
