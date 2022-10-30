@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { filterContacts } from 'redux/contacts/slices/filterSlice';
 import TextField from '@mui/material/TextField';
-import { Form } from 'components/AddContactForm/ContactForm.styled';
+import { Form } from 'components/ContactForm/ContactForm.styled';
 
 const SearchContactFilter = () => {
   const dispatch = useDispatch();

@@ -6,7 +6,7 @@ import {
   selectError,
   selectIsLoading,
 } from 'redux/contacts/contactSelectors';
-import { ContactForm } from 'components/AddContactForm/ContactForm';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import SearchContactFilter from 'components/Filter/Filter';
 

@@ -1,8 +1,9 @@
-import * as React from 'react';
+import Notiflix from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { addContacts } from 'redux/contacts/contactsThunk.js';
 import { selectContacts } from 'redux/contacts/contactSelectors';
-import Notiflix from 'notiflix';
+
 import { Form } from './ContactForm.styled';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
